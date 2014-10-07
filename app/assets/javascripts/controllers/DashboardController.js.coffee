@@ -1,4 +1,4 @@
-angular.module('todoApp').controller "DashboardController", ($scope, $routeParams, $location, TaskList) ->
+angular.module('sentinelApp').controller "DashboardController", ($scope, $routeParams, $location, TaskList) ->
 
   $scope.init = ->        
     @listsService = new TaskList(serverErrorHandler)

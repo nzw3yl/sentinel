@@ -1,4 +1,4 @@
-describe 'TodoListController', ->
+describe 'SentinelListController', ->
   class Task
     constructor: (_) ->
     all: -> []
@@ -6,14 +6,14 @@ describe 'TodoListController', ->
     delete: (_) ->
 
   beforeEach ->
-    module('todoApp')
+    module('sentinelApp')
 
   beforeEach ->
     inject ($rootScope, $controller, $injector, TaskList) =>
       @TaskList = TaskList     
       spyOn(@TaskList.prototype, 'find').andReturn({name: "Your list", tasks: [{description: 'Task 1'}]})
       @scope = $rootScope.$new()
-      @ctrl  = $controller "TodoListController", $scope: @scope, TaskList: @TaskList, Task: Task
+      @ctrl  = $controller "SentinelListController", $scope: @scope, TaskList: @TaskList, Task: Task
 
   it 'should initialize scope.tasks to result of taskListService.find', ->
     @scope.init()

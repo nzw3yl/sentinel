@@ -1,4 +1,4 @@
-angular.module('todoApp').factory 'Task', ($resource, $http) ->
+angular.module('sentinelApp').factory 'Task', ($resource, $http) ->
   class Task
     constructor: (taskListId, errorHandler) ->
       @service = $resource('/api/task_lists/:task_list_id/tasks/:id',

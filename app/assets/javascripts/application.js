@@ -5,5 +5,5 @@
 //= require turbolinks
 //= require lib/angular.min
 //= require lib/angular-resource.min
-//= require todoApp
+//= require sentinelApp
 //= require_tree .
