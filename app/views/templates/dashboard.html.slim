@@ -1,22 +1,159 @@
 .ng-cloak(ng-init="init()")
+  div#accordian.panel-group
+    div.panel.panel-default
+      div.panel-heading 
+        h4.panel-title 
+          = link_to "BLC", "#collapseOne", data: { toggle: "collapse", parent: "#accordion" }
+          button.btn-alert.btn.btn-default.btn-xs.pull-right(data-toggle="modal" data-target="#alertModal" data-carehandle="BLC") send alert
+      div#collapseOne.panel-collapse.collapse
+        div.panel-body
+          div.lead
+            span.label.label-success OK
+            span &nbsp; No service impacting issues reported
+    div.panel.panel-warning
+	  div.panel-heading 
+	    h4.panel-title
+	      = link_to "D+H", "#collapseTwo", data: { toggle: "collapse", parent: "#accordion" }
+	      button.btn-alert.btn.btn-default.btn-xs.pull-right(data-toggle="modal" data-target="#alertModal" data-carehandle="D+H") send alert
+      div#collapseTwo.panel-collapse.collapse
+        div.panel-body
+          div.lead
+            span.label.label-warning Sev 2
+            span &nbsp; Calendar searching is not functioning. 40 users reported the issue to support
+          div.strong Latest Update:
+          div.well.well-sm 
+            div User moves are underway in order to alleviate symptoms
+            div.pull-right 
+              small 1 hour 7 minutes ago
+            div 
+              em by Raymond Chung
+          div.row
+            div.col-xs-6.col-sm-4
+		      div.well.well-sm
+	            div 
+	              strong Time to Resolve: 
+	            div 60 mins
+            div.col-xs-6.col-sm-4
+              div.well.well-sm
+                div 
+                  strong Next Update: 
+                div 60 minutes
 
-  div.panel.panel-default.dashboard-list
-    div.panel-heading 
-      h4 Your lists
-    ul.list-group(ng-show="lists == 0")
-      li.list-group-item
-        ' You haven't created any lists yet.      
-    ul.list-group
-      li.list-group-item(ng-repeat="list in lists")
-        button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteList(list, $index)")
-          span.glyphicon.glyphicon-ban-circle        
-        a(href="/task_lists/{{list.id}}") 
-          ' {{list.name}} ({{list.tasks.length}})      
+          = link_to "More Info", warroom_path, class: "btn btn-primary pull-right"
+	div.panel.panel-danger
+	  div.panel-heading 
+	    h4.panel-title
+	      = link_to "RIO", "#collapseThree", data: { toggle: "collapse", parent: "#accordion" } 
+	      button.btn-alert.btn.btn-default.btn-xs.pull-right(data-toggle="modal" data-target="#alertModal" data-carehandle="RIO") send alert
+      div#collapseThree.panel-collapse.collapse
+        div.panel-body
+          div.lead
+            span.label.label-danger Sev 1
+            span &nbsp; Users are currently unable to access webmail and Outlook from the Montreal office
+          div.strong Latest Update:
+          div.well.well-sm 
+            div Microsoft premier support engaged
+            div.pull-right 
+              small 14 minutes ago
+            div 
+              em by Keenan Coughlin
+          div.row
+            div.col-xs-6.col-sm-4
+		      div.well.well-sm
+	            div 
+	              strong Time to Resolve: 
+	            div 60 mins
+            div.col-xs-6.col-sm-4
+              div.well.well-sm
+                div 
+                  strong Next Update: 
+                div 16 minutes
+          
+          = link_to "More Info", warroom_path, class: "btn btn-primary pull-right"
 
-  form#new_list(ng-submit="createList(listName)")
-    .input-group
-      input#taskDescription.form-control.input-lg(type="text" autofocus="autofocus" placeholder="List name" maxlength="255" ng-model="listName" data-non-blank)
-      span.input-group-btn
-        button.btn.btn-primary.btn-lg(type="submit") create list
-
-  
+#alertModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button" data-dismiss="modal")
+		  span(aria-hidden="true") &times;
+		  span.sr-only Close
+		h4#alertModalLabel.modal-title 
+		  span#carehandle
+		  span New Notification!
+      .modal-body
+        form(role="form")
+          .form-group
+            .panel.panel-info
+              .panel-heading 
+                strong Summary of Issue
+              .panel-body
+                textarea.form-control(rows="3")
+          
+          .form-group
+            .panel.panel-info
+              .panel-heading 
+                strong Scope/Impact Rating
+              .panel-body
+            	.radio
+	              label
+	                input(type="radio" name="scopeRadios" id="scopeRadios1" value="total")
+	                span Sev 1 - Major Service Impact
+	            .radio
+	              label
+	                input(type="radio" name="scopeRadios" id="scopeRadios2" value="partial")
+	                span Sev 2 Partial Service Impact
+	            .radio
+	              label
+	                input(type="radio" name="scopeRadios" id="scopeRadios3" value="investigation" checked)
+	                span Investigation (Unknown Impact)
+		  .form-group
+            .panel.panel-info
+              .panel-heading 
+                strong Services/Features Impacted
+              .panel-body
+                div.col-md-6.col-sm-12
+          	      .checkbox
+	                label
+	                  input(type="checkbox" value="all")
+	                  span ALL SERVICES
+            	  .checkbox
+	                label
+	                  input(type="checkbox" value="mailflow")
+	                  span Mail Flow
+	              .checkbox
+	                label
+	                  input(type="checkbox" value="outlookaccess")
+	                  span Outlook Access
+	              .checkbox
+	                label
+	                  input(type="checkbox" value="owa")
+	                  span Webmail (OWA)         
+		          .checkbox
+	                label
+	                  input(type="checkbox" value="mobility")
+	                  span ActiveSync/BES Mobile
+           		div.col-md-6.col-sm-12
+            	  .checkbox
+	                label
+	                  input(type="checkbox" value="cloudcontrol")
+	                  span Cloud Control
+	              .checkbox
+	                label
+	                  input(type="checkbox" value="sharepoint")
+	                  span SharePoint
+	              .checkbox
+	                label
+	                  input(type="checkbox" value="lync")
+	                  span Lync         
+		          .checkbox
+	                label
+	                  input(type="checkbox" value="office365")
+	                  span Office 365
+		          .checkbox
+	                label
+	                  input(type="checkbox" value="unclear" checked)
+	                  span Gathering Information
+      .modal-footer
+        button.btn.btn-default(type="button" data-dismiss="modal") Cancel
+        button.btn.btn-primary(type="button") Submit

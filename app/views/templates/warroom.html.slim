@@ -1,0 +1,165 @@
+.ng-cloak(ng-init="init()")
+  h4 RIO Sev 1 <small> Email access from Montreal office </small>
+  ul.nav.nav-tabs(role="tablist")
+    li
+      = link_to "Overview", "#overview", data: { toggle: "tab"}
+    li.active
+      = link_to "Updates", "#warroom", data: { toggle: "tab"}
+    li
+      = link_to "Timeline", "#timeline", data: { toggle: "tab"}
+    li
+      = link_to "Findings", "#findings", data: { toggle: "tab"}
+    li
+      = link_to "Root Cause", "#rootcause", data: { toggle: "tab"}
+    li.disabled
+      = link_to "Next Steps", "#nextsteps"
+  br
+  .tab-content
+    #findings.tab-pane
+	  table.table-condensed.table-striped
+        tr
+          th Key Findings
+        tr
+          td Monitoring system for Montreal was impacted by network disruption
+        tr
+          td Firmware version on Montreal firewall was up to date
+        tr
+          td Databases complained about lack of quorum prior to dismounting
+        tr
+          td Microsoft acknowledges known issue with similar symptoms on Exchange 2013
+    #warroom.tab-pane.active
+      form(role="form")
+        .form-group
+          textarea.form-control(rows="3")
+        button.btn.btn-primary.pull-right(type="submit") Publish Update
+        br
+        br
+      blockquote.scratch-post
+        p Microsoft premier support engaged
+      p.pull-right  
+        span  16 mins ago by Keenan Coughlin &nbsp;
+        button.btn.btn-default.btn-xs(type="button")
+          span.glyphicon.glyphicon-trash 
+        span.hidden-xs
+          label.check-inline
+            input#chkbxTimeline(type="checkbox" value="timeline" checked)  
+              small &nbsp;Add to Timeline&nbsp;&nbsp;
+          label.check-inline
+            input#chkbxResolution(type="checkbox" value="findings")  
+              small &nbsp;Add to Findings
+      br
+      br
+      blockquote.scratch-post
+        p Users unable to retrieve archived messages in OWA
+      p.pull-right
+       span  37 mins ago by Raymond Chung &nbsp;
+       button.btn.btn-default.btn-xs(type="button")
+         span.glyphicon.glyphicon-trash
+       span.hidden-xs
+         label.check-inline
+           input#chkbxTimeline(type="checkbox" value="timeline")  
+             small &nbsp;Add to Timeline&nbsp;&nbsp;
+         label.check-inline
+           input#chkbxResolution(type="checkbox" value="findings")  
+             small &nbsp;Add to Findings
+
+    #timeline.tab-pane.fade
+      table.table-condensed.table-striped
+        tr
+          th Date/Time
+          th Event
+        tr
+          td 9:30 AM
+          td Tunnel to Montreal data center went offline
+        tr
+          td 9:35 AM
+          td Network operations team received alert that services were down in Montreal
+        tr
+          td 10:35 AM
+          td Databases dismount on server RIOX40005 and RIOV40007
+        tr
+          td 10:49 AM
+          td Microsoft premier support ticket moved to Sev A
+        
+    #overview.tab-pane.fade
+      .col-md-6
+        .panel.panel-info
+          .panel-heading 
+            .panel-title Impact Summary
+          .panel-body
+            ul.list-group
+              li.list-group-item 
+                h5.list-group-item-heading Start Time
+                p.list-group-item-text Jan 3, 2014 5:12 AM
+              li.list-group-item 
+                h5.list-group-item-heading End Time
+                p.list-group-item-text Jan 3, 2014 10:47 AM
+              li.list-group-item 
+                h5.list-group-item-heading Duration
+                p.list-group-item-text 5 hours 35 minutes
+              li.list-group-item 
+                h5.list-group-item-heading User Count
+                p.list-group-item-text 2430
+      .col-md-6
+        .panel.panel-info
+          .panel-heading 
+            .panel-title Issue Status
+          .panel-body
+            .radio
+              label
+                input#optionActive(type="radio" name="optionsStatus" value="active") Active
+            .radio
+              label
+                input#optionWorkaround(type="radio" name="optionsStatus" value="workaround") Work Around
+            .radio
+              label
+                input#optionResolved(type="radio" name="optionsStatus" value="resolved" checked) Resolved
+            .radio.disabled
+              label
+                input#optionClosed(type="radio" name="optionsStatus" value="closed" disabled) Closed
+            button.btn.btn-primary(type="button" disabled="disabled") Generate Report
+            br
+            h4 Items to Close:
+            .list-group
+              =link_to "#rootcause", class: "list-group-item" do 
+                h5.list-group-item-heading Root Cause
+                p.list-group-item-text Input Required
+              =link_to "#nextsteps", class: "list-group-item" do 
+                h5.list-group-item-heading Next Actions
+                p.list-group-item-text 3 Items open
+
+      .col-md-6
+        .panel.panel-info
+          .panel-heading 
+            .panel-title Resources Involved
+          .panel-body
+			ul.list-group
+              li.list-group-item 
+                h5.list-group-item-heading John Dough
+                p.list-group-item-text Ceryx - Service Delivery Manager
+              li.list-group-item 
+                h5.list-group-item-heading Mary Dough
+                p.list-group-item-text Ceryx - Network Operations Manager
+              li.list-group-item 
+                h5.list-group-item-heading Sam Dough
+                p.list-group-item-text IBM - Service Delivery Manager
+              li.list-group-item 
+                h5.list-group-item-heading John Smith
+                p.list-group-item-text Ceryx - Network Engineer
+              li.list-group-item 
+                h5.list-group-item-heading Louise Jones
+                p.list-group-item-text RIO - Operations Manager
+              li.list-group-item
+          		.form.form-inline(role="form")
+		            .form-group
+		              label.sr-only(for="addResource") Enter Name
+		              input#addResource.form-control(type="text" placeholder="Enter Name")
+		            button.btn.btn-success(type="submit") Add
+    #rootcause.tab-pane.fade
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Root Cause
+        .panel-body
+
+    #nextsteps.tab-pane.fade
+      p nextsteps

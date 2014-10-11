@@ -1,0 +1,29 @@
+.scratch-post
+  position: relative
+  padding: 15px 30px
+  margin: 3px
+  color: #000
+  background: #dfdfdf
+  /* default background for browsers without gradient support
+  /* css3
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#dfdfdf))
+  background: -moz-linear-gradient(#ffffff, #dfdfdf)
+  background: -o-linear-gradient(#ffffff, #dfdfdf)
+  background: linear-gradient(#ffffff, #dfdfdf)
+  -webkit-border-radius: 10px
+  -moz-border-radius: 10px
+  border-radius: 10px
+  + p
+    margin: 1px 0 2em 85px
+    font-style: italic
+  &:after
+    content: ""
+    position: absolute
+    bottom: -25px
+    left: 50px
+    border-width: 0 20px 25px 0px
+    border-style: solid
+    border-color: transparent #dfdfdf
+    /* reduce the damage in FF3.0
+    display: block
+    width: 0

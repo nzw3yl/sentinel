@@ -8,6 +8,8 @@ sentinelApp.config ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
   $routeProvider.when '/', redirectTo: '/dashboard'
   $routeProvider.when '/dashboard', templateUrl: '/templates/dashboard.html', controller: 'DashboardController'
+  $routeProvider.when '/warroom', templateUrl: '/templates/warroom.html', controller: 'WarroomController'
+  $routeProvider.when '/project', templateUrl: '/templates/project.html', controller: 'ProjectController'
   $routeProvider.when '/task_lists/:list_id', templateUrl: '/templates/task_list.html', controller: 'SentinelListController'   
 
 # Makes AngularJS work with turbolinks.
